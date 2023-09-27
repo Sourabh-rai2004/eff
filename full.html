@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Column Layout with Background Image</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+ 
+/* @font-face {
+	font-family: 'Antarctica';
+	src: url('fonts/Antarctica-ExtraCondensedThin.otf') format('truetype supports variations'),
+       url('fonts/Antarctica-ExtraCondensedThin.otf') format('truetype-variations');
+	font-weight: 100 1000;
+	font-stretch: 25% 151%;
+} */
+@font-face {
+	font-family: 'Antarctica';
+	src: url('fonts/Antarctica-VF.ttf') format('truetype supports variations'),
+       url('fonts/Antarctica-VF.ttf') format('truetype-variations');
+	font-weight: 100 1000;
+	font-stretch: 25% 151%;
+}
+@font-face {
+    font-family: 'Antarctica-CondensedMedium';
+    src: local('Antarctica-CondensedMedium'), url(fonts/Antarctica-CondensedMedium.otf) format('opentype supports variations'), url(fonts/Antarctica-CondensedMedium.otf) format('opentype-variations');
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+}
+@font-face {
+    font-family: 'Antarctica-ExtraCondLight';
+    src: local('Antarctica-ExtraCondLight'), url(fonts/Antarctica-ExtraCondLight.otf) format('opentype supports variations'), url(fonts/Antarctica-ExtraCondLight.otf) format('opentype-variations');
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+}
+@font-face {
+    font-family: 'Antarctica-ExtraCondSemBd';
+    src: local('Antarctica-ExtraCondSemBd'), url(fonts/Antarctica-ExtraCondSemBd.otf) format('opentype supports variations'), url(fonts/Antarctica-ExtraCondSemBd.otf) format('opentype-variations');
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+}
+ 
+@font-face {
+    font-family: 'Antarctica-CondensedRegular';
+    src: local('Antarctica-CondensedRegular'), url(fonts/Antarctica-CondensedRegular.otf) format('opentype supports variations'), url(fonts/Antarctica-CondensedRegular.otf) format('opentype-variations');
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+}
+@font-face {
+    font-family: 'Antarctica-ExtraCondMed';
+    src: local('Antarctica-ExtraCondMed'), url(fonts/Antarctica-ExtraCondMed.otf) format('opentype supports variations'), url(fonts/Antarctica-ExtraCondMed.otf) format('opentype-variations');
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+}
+@font-face {
+    font-family: 'Antarctica-CondLightContrast';
+    src: local('Antarctica-CondLightContrast'), url(fonts/Antarctica-CondLightContrast.otf) format('opentype supports variations'), url(fonts/Antarctica-CondLightContrast.otf) format('opentype-variations');
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+}
+@font-face {
+    font-family: 'Antarctica-CondBold';
+    src: local('Antarctica-CondBold'), url(fonts/Antarctica-CondBold.otf) format('opentype supports variations'), url(fonts/Antarctica-CondBold.otf) format('opentype-variations');
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+} 
+        html, body {
+            margin: 0;
+          
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Define a container for the layout */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        /* Define styles for the left column */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            margin-left: 40px;
+            flex: 1; /* Take up 50% of the container's width */
+            padding: 20px; /* Background color for the left column */
+            margin-top: -20px;
+        }
+        
+        /* Define styles for the right column */
+        .right-column {
+            flex: 1; /* Take up 50% of the container's width */
+            background-image: url('https://www.andacademy.com/wp-content/themes/andacademy/pm/images/Grid-grid.png'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .right-column {
+                background-size: cover;
+                height: 100%;
+            }
+
+        .rights{
+            margin-top: 20px;
+            height: 65vh;
+            width: 85%;
+            border: 30px solid #cdaeff;
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 50px;
+            margin-left: 160px;
+            justify-content: left;
+        }
+
+        .button {
+           
+            background: #5926C4;
+    color: #fff;
+    font-size: 17px;
+    text-transform: uppercase;
+    padding: 10px 0;
+    text-align: center;
+    font-family: 'Antarctica-ExtraCondSemBd';
+    line-height: 27px;
+    display: block;
+    border: #ae7bff;
+    width: 190px;
+        }
+
+       
+        /* Define styles for the columns */
+        .containes {
+            display: flex; /* Use flexbox for the layout */
+            max-width: 800px; /* Set a maximum width for the container */
+            margin-left: 0px;
+        }
+
+        .colums {
+            flex: 1; /* Make the columns take equal space */
+            padding: 0px; /* Add some spacing inside each column */
+        }
+
+     .head{
+        margin-top: 15px;
+    font-family: 'Antarctica-ExtraCondLight';
+    font-size: 17px;
+    line-height: 25px;
+    color: #535353;
+  
+     }
+     
+     .one{
+        font-size: 45px;
+               font-family: Antarctica-ExtraCondMed;
+               text-transform: uppercase;
+               color: #CDAEFF;
+               background: #fff0;
+               padding: 0 0 10px 0;
+               margin-bottom: 0;
+               line-height: 50px;
+     }
+     .part{
+        color: #6E1DED;
+               font-size: 40px;
+               font-family: 'Antarctica-CondensedMedium';
+               line-height: 50px;
+               padding-top: 10px;
+     }
+
+     .week{
+        font-size: 20px; margin-top: 10px;
+                  font-family: 'Antarctica-ExtraCondLight';
+                  color: black;
+                  line-height: 35px;
+     }
+
+     .term1{
+                        color: #CDAEFF;
+                        border-top: 0;
+                        padding: 0 0;
+                        font-family: 'Antarctica-ExtraCondMed';
+                        font-size: 35px;
+                        padding-bottom: 10px;
+                        text-transform: uppercase;
+                        line-height: 30px;
+     }
+
+     .para{
+                        padding-left: 15px; 
+                        font-size: 16px;
+                        font-family: 'Antarctica-ExtraCondLight';
+                        line-height: 25px;
+                        color: #CDAEFF;
+     }
+
+     .term2{
+                         color: #CDAEFF;
+                        border-top: 0;
+                        padding: 0 0;
+                        font-family: 'Antarctica-ExtraCondMed';
+                        font-size: 35px;
+                        padding-bottom: 10px;
+                        text-transform: uppercase;
+                        line-height: 30px;
+     }
+     .lara{
+                margin-top: 8px;
+                font-size: 16.5px;
+                font-family: 'Antarctica-ExtraCondLight';
+                line-height: 25px;
+                color: #A5A5A5;
+     }
+     .rar{
+        margin-top: 10px;
+     }
+     @media screen and (min-width: 1440px) and (max-width: 3200px) {
+        .one{
+        font-size: 60px;
+               font-family: Antarctica-ExtraCondMed;
+               text-transform: uppercase;
+               color: #CDAEFF;
+               background: #fff0;
+               padding: 0 0 10px 0;
+               margin-bottom: 0;
+               line-height: 50px;
+     }
+     .part{
+               color: #6E1DED;
+               font-size: 45px;
+               font-family: 'Antarctica-CondensedMedium';
+               line-height: 50px;
+               padding-top: 20px;
+     }
+
+     .week{
+        font-size: 25px; margin-top: 25px;
+                  font-family: 'Antarctica-ExtraCondLight';
+                  color: black;
+                  line-height: 35px;
+     }
+
+     .term1{
+                        color: #CDAEFF;
+                        margin-top: -30px;
+                        border-top: 0;
+                        padding:  0;
+                        font-family: 'Antarctica-ExtraCondMed';
+                        font-size: 40px;
+                        padding-bottom: 10px;
+                        text-transform: uppercase;
+                        line-height: 30px;
+     }
+
+     .para{
+                        padding-left: 15px; 
+                        font-size: 19px;
+                        font-family: 'Antarctica-ExtraCondLight';
+                        line-height: 30px;
+                        color: #CDAEFF;
+     }
+
+     .term2{
+                         color: #CDAEFF;
+                         margin-top: -30px;
+                        border-top: 0;
+                        padding: 0 0;
+                        font-family: 'Antarctica-ExtraCondMed';
+                        font-size: 40px;
+                        padding-bottom: 10px;
+                        text-transform: uppercase;
+                        line-height: 30px;
+     }
+     .lara{
+               
+                font-size: 18.5px;
+                font-family: 'Antarctica-ExtraCondLight';
+                line-height: 30px;
+                color: #A5A5A5;
+     }
+     .rar{
+        height: 30px;
+        width: 20px;
+        margin-top: 20px;
+     }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 50px;
+            margin-left: 280px;
+            justify-content: left;
+        }
+
+        .button {
+        background: #5926C4;
+        color: #fff;
+        font-size: 20px;
+        text-transform: uppercase;
+        padding: 12px 0;
+        text-align: center;
+        font-family: 'Antarctica-ExtraCondSemBd';
+        line-height: 35px;
+        display: block;
+        border: #ae7bff;
+        width: 200px;
+            }
+
+        .containes {
+            display: flex; /* Use flexbox for the layout */
+            max-width: 900px; /* Set a maximum width for the container */
+            margin-left: 0px;
+        }
+        
+        .colums {
+            flex: 1; /* Make the columns take equal space */
+            padding: 40px 10px 15px 0px; /* Add some spacing inside each column */
+        }
+         
+        .head{
+            margin-top: 15px;
+        font-family: 'Antarctica-ExtraCondLight';
+        font-size: 21px;
+        line-height: 35px;
+        color: #535353;
+    
+        }
+          .container {
+              min-height: 100vh;
+              flex-direction: row; /* Display columns side by side */
+          }
+         
+
+          .left-column,
+          .right-column {
+              margin-left: 50px;
+             margin-top: 10px; 
+              flex: 1;
+              padding: 0px;
+          }
+
+          .right-column {
+              background-size: cover;
+              height: 90vh;
+          }
+
+          
+          
+      } 
+      @media screen and (min-width: 1280px) and (max-width: 1440px) {
+        
+            .container {
+                min-height: 100vh;
+                flex-direction: row; /* Display columns side by side */
+            }
+
+
+            .left-column,
+            .right-column {
+               margin-top: 5px; 
+                flex: 1;
+                padding: 0px;
+            }
+
+            .right-column {
+                
+                background-size: cover;
+                height: 90vh;
+            }
+      
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <img style="margin-top: 10px;" src="https://andacademynew.quintero-solutions.com/temp-resources/wp-content/uploads/2023/09/Group-511-1.png" width="100%" height="auto"></div><br>
+ <div class="container">
+        
+        <div class="left-column">
+                
+               <h3 class="one">FULL-TIME COURSE</h3>
+               <h4 class="part">PG Diploma</h4>
+                  <p class="week">36 Weeks <span style="color: black;">. </span><span style="font-family: 'Antarctica-ExtraCondLight'; font-size: 20px; background-color: #AE7BFF; border: 5px solid #AE7BFF; border-radius: 20px; color: white;">Job Guarantee</span> </p><br>
+
+                <div class="containes">
+                    <div class="colums left">
+                        <h4 class="term1">TERM 1</h4>
+                        <h5 style="margin-top: 15px;" class="head">1. Fundamentals of Visual Design</h5>
+                        <p class="para">Project: Type-based poster & icon</p>
+                        <p class="head">2. Print & Publication</p>
+                        <p class="para">Project: Brochure & collaterals</p>
+                        <p class="head">3. Context & Inquiry</p>
+                        <p class="para">Project: Visual storytelling</p>
+                        <p class="head">4. Brand Identity Design</p>
+                        <p class="para">Project: Design system for a brand</p>
+                        <p class="head">5. Portfolio & Career Development</p>
+                    </div>
+                    <div class="colums right">
+                        <h4 class="term2">TERM 2</h4>
+                        <p style="margin-top: 15px;" class="head">6. Motion Graphics</p>
+                        <p class="para">Project: Visual storytelling with motion</p>
+                        <p class="head">7. Brand Narratives & Communication</p>
+                        <p class="para">Project: Social media narrative</p>
+                        <p class="head">8. Campaign Design</p>
+                        <p class="para">Project: Multi-channel collaterals</p>
+                        <p class="head">9. Portfolio & Career Development</p>
+                        
+                    </div>
+                </div> 
+                    
+                <p class="lara">Software: Illustrator, Photoshop, InDesign, After Effects,XD, Premiere Pro, etc</p>    
+              <a href="ux.html"><img class="rar" src="https://www.andacademy.com/wp-content/themes/andacademy/pm/images/Back-arrow.png" width="15px">
+              </a> 
+                
+           
+        </div>
+        <div class="right-column">
+            <img class="rights" src="https://www.andacademy.com/wp-content/themes/andacademy/pm/images/desktop-Project-1.jpg">
+            <!-- <div class="buttons">
+                <a href="studentjourney.html"> <button class="button">SEE STUDENT JOURNEY</button></a>
+                <a href="getbrochure.html"><button class="button">GET BROCHURE</button></a>
+             </div> -->
+             
+               
+           
+            <!-- Button to load a different page -->
+            <div class="buttons">
+                <button id="loadButton" class="button">SEE STUDENT WORK</button>
+                <button id="loadButton2" class="button">GET BROCHURE</button>
+            </div>
+        
+    </div>
+</div>
+        
+<script>
+    // Function to load and replace content
+    function loadPage(url) {
+        // Hide the previous content
+        $('#content').hide();
+        // Load new content
+        $.ajax({
+            url: url,
+            method: 'GET',
+            dataType: 'html',
+            success: function(data) {
+                // Replace the content and show it
+                $('#content').html(data).show();
+            },
+            error: function() {
+                alert('Error loading the page.');
+            }
+        });
+    }
+    // Attach a click event handler to the button
+    $('#loadButton').click(function() {
+        loadPage('studentwork.html'); // Change the URL to the desired page
+    });
+
+    $('#loadButton2').click(function() {
+        loadPage('getbrochure.html'); // Change the URL to the desired page
+    });
+</script>
+</body>
+</html>
